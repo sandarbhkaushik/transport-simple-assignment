@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TransportSimple</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+
+<script>
+  $(function() {
+
+    $('.dropdown-toggle1').on('click', function(event) {
+      $('.dropdown-menu1').slideToggle();
+      event.stopPropagation();
+    });
+
+    $('.dropdown-menu1').on('click', function(event) {
+      event.stopPropagation();
+    });
+
+    $(window).on('click', function() {
+      $('.dropdown-menu1').slideUp();
+    });
+
+  });
+  $(function() {
+
+    $('.dropdown-toggle2').on('click', function(event) {
+      $('.dropdown-menu2').slideToggle();
+      event.stopPropagation();
+    });
+
+    $('.dropdown-menu2').on('click', function(event) {
+      event.stopPropagation();
+    });
+
+    $(window).on('click', function() {
+      $('.dropdown-menu2').slideUp();
+    });
+
+  });
+</script>
+</html>

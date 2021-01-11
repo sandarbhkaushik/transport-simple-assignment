@@ -1,0 +1,130 @@
+ol.timetable li {
+  min-width: 25%;
+}
+.timetable {
+  width: 100%;
+  list-style: none;
+  list-style-image: none;
+  margin: 20px 0 20px 0;
+  padding: 0;
+}
+.timetable li {
+  float: left;
+  text-align: center;
+  position: relative;
+}
+.timetable .date {
+  display: block;
+  vertical-align: bottom;
+  text-align: center;
+  margin-bottom: 1em;
+  color: #2B2B2B;
+}
+.timetable .dot {
+  color: black;
+  border: 3px solid #B2B2B2;
+  background-color: #B2B2B2;
+  border-radius: 50%;
+  line-height: 1.2;
+  width: 1.2em;
+  height: 1.2em;
+  display: inline-block;
+  z-index: 2;
+}
+.timetable .active .date,
+.timetable .active .dot span {
+  color: black;
+}
+.timetable .dot:before {
+  content: "";
+  display: block;
+  background-color: #B2B2B2;
+  height: 0.4em;
+  width: 80%;
+  position: absolute;
+  bottom: 0.9em;
+  left: -40%;
+  z-index: 1;
+}
+.timetable li:first-child .dot:before {
+  display: none;
+}
+.timetable .active .dot {
+  border: 3px solid #F26227;
+  background-color: #F26227;
+}
+.timetable .active + .active .dot:before {
+  background-color: #F26227;
+}
+.timetable li > span:nth-child(3){
+  position:absolute;
+  right:0;
+  bottom:-15px;
+  transform: translateX(50%);
+}
+
+.main {
+  width: 50%;
+  margin: 50px auto;
+}
+
+/* Bootstrap 4 text input with search icon */
+
+.has-search .form-control {
+  padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+  position: absolute;
+  z-index: 2;
+  display: block;
+  width: 2.375rem;
+  height: 2.375rem;
+  line-height: 2.375rem;
+  text-align: center;
+  pointer-events: none;
+  color: #aaa;
+}
+.dropdown-menu{
+  min-width: 15rem !important;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+li {
+  padding: 10px 25px;
+  border: 1px solid black;
+  margin: 0 25px;
+  position: relative;
+}
+li:not(:last-child):after {
+  content: '';
+  height: 1px;
+  background: black;
+  width: 50px;
+  position: absolute;
+  right: -50px;
+  top: 50%;
+}
+li:not(:last-child):before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: 50%;
+  //border-style: solid;
+  //border-width: 7px 0 7px 20px;
+  //border-color: transparent transparent transparent black;
+  right: -50px;
+  transform: translateY(-50%);
+}
+.arrowLine {
+ border-style: solid;
+ border-width: 7px 0 7px 20px;
+ border-color: transparent transparent
+}
+.borderzero{
+ border: none !important;
+}

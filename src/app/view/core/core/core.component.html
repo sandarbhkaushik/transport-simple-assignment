@@ -1,0 +1,126 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="dropdown1">
+        <a class="dropdown-toggle1" id="dropdownMenuButton1" data-toggle="dropdown1" aria-haspopup="true"
+          aria-expanded="false">
+          <!-- Choose -->
+          <input type="text" name="source" id="source" placeholder="Choose.." [(ngModel)]="sourceModel" class="borderzero">
+        </a>
+
+        <div class="dropdown-menu1" aria-labelledby="dropdownMenuButton">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <a class="dropdown-item" style="background-color: #eeeff7" (click)="addCity(event)"> <i
+              class="fa fa-plus mr-2"></i>Add New</a>
+
+          <div class="input-group mb-3" *ngIf="addNewCity == true">
+            <input type="text" class="form-control" id="" [(ngModel)]="cityName" placeholder="">
+            <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon5" (click)="cancelAddItem()"> <i class="fa fa-times"></i></span>
+              <span class="input-group-text" id="basic-addon7" (click)="addCityInArray(cityName)">
+                <i class="fa fa-check"></i>
+              </span>
+            </div>
+          </div>
+
+          <a class="dropdown-item" *ngFor="let value of dropdownOptions | filter:term" (click)="changeSource(value)">{{value.cityName}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="dropdown2">
+        <a class="dropdown-toggle2" id="dropdownMenuButton2" data-toggle="dropdown2" aria-haspopup="true"
+          aria-expanded="false">
+          <!-- Choose -->
+          <input type="text" name="destination" id="destination" placeholder="Choose.." [(ngModel)]="destinationModel" class="borderzero">
+        </a>
+
+        <div class="dropdown-menu2" aria-labelledby="dropdownMenuButton2">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search" [(ngModel)]="term2">
+            <div class="input-group-append">
+              <button class="btn btn-secondary" type="button">
+                <i class="fa fa-search"></i>
+              </button>
+            </div>
+          </div>
+
+          <a class="dropdown-item" style="background-color: #eeeff7" (click)="addCityDestination(event)"> <i
+              class="fa fa-plus mr-2"></i>Add New</a>
+
+          <div class="input-group mb-3" *ngIf="addNewCity2 == true">
+            <input type="text" class="form-control" id="" [(ngModel)]="cityNameDestination" placeholder="">
+            <div class="input-group-append">
+              <span class="input-group-text" id="basic-addon6" (click)="cancelAddItem()"> <i class="fa fa-times"></i></span>
+              <span class="input-group-text" id="basic-addon2" (click)="addCityDestonationInArray(cityNameDestination)">
+                <i class="fa fa-check"></i>
+              </span>
+            </div>
+          </div>
+
+          <a class="dropdown-item" *ngFor="let value of dropdownDestination | filter:term2" (click)="changeDestination(value)">{{value.cityName}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+
+
+    <form [formGroup]="demoForm">
+      <div formArrayName="demoArray" *ngFor="let arrayItem of arrayItems | keyvalue;  let i=index">
+      </div>
+    </form>
+
+    <div>
+      <button class="btn btn-info" id="save"  (click)="addValue()">save</button>
+    </div>
+
+
+
+
+  </div>
+
+  <div>
+    <div class="row">
+      <ul class="list-group list-group-horizontal">
+        <li *ngFor="let city of arrayItems; let idx = index " class="list-group-item">
+          {{city.source?.cityCode}}
+          {{city.destination?.cityCode}}
+          <div class="col-md-4">
+            <div *ngIf="idx > 0">
+              {{arrayItems[idx].source?.cityCode == arrayItems[idx - 1].destination?.cityCode}}
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+    </div>
+  </div>
+</div>
+<ng-snotify></ng-snotify>
+<script>
+  $(function() {
+
+    $('.dropdown-toggle').on('click', function(event) {
+      $('.dropdown-menu').slideToggle();
+      event.stopPropagation();
+    });
+
+    $('.dropdown-menu').on('click', function(event) {
+      event.stopPropagation();
+    });
+
+    $(window).on('click', function() {
+      $('.dropdown-menu').slideUp();
+    });
+
+  });
+</script>
